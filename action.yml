@@ -200,6 +200,10 @@ runs:
       shell: bash
       if: inputs.setup-checkov == 'true'
 
+    - name: Enable Golang caching
+      if: ${{ !startsWith(github.action_ref, 'v') }}
+      uses: actions/setup-go@v4
+
     - name: build and run digger
       if: ${{ !startsWith(github.action_ref, 'v') }}
       shell: bash
